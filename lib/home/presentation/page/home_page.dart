@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_anxiety/home_store.dart';
+import 'package:flutter_anxiety/home/store/home_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class AHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
   _AMyHomePageState createState() => _AMyHomePageState();
 }
 
-class _AMyHomePageState extends State<AHomePage> {
+class _AMyHomePageState extends State<HomePage> {
   final homeController = Home();
 
   @override
