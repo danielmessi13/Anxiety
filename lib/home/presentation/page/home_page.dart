@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/diary/presentation/page/diary_page.dart';
+import 'package:flutter_anxiety/history/presentation/page/history_page.dart';
+import 'package:flutter_anxiety/home/presentation/widget/home_initial.dart';
 import 'package:flutter_anxiety/home/store/home_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _AMyHomePageState createState() => _AMyHomePageState();
-}
-
-class _AMyHomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   final homeController = Home();
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.5;
-    final fontSize = MediaQuery.of(context).size.width * 0.06;
     return Observer(
       builder: (_) => Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -38,22 +34,11 @@ class _AMyHomePageState extends State<HomePage> {
           currentIndex: homeController.indexPage,
           onTap: homeController.changePage,
         ),
-        body: Center(
-          child: Container(
-            width: width,
-            height: width,
-            child: FloatingActionButton(
-              onPressed: () {},
-              tooltip: "Clique para iniciar a ajuda",
-              splashColor: Colors.transparent,
-              backgroundColor: Colors.blueGrey[600],
-              child: Text(
-                "Iniciar",
-                style: TextStyle(fontSize: fontSize, color: Colors.white),
-              ),
-            ),
-          ),
-        ),
+        body: homeController.indexPage == 0
+            ? HistoryPage()
+            : homeController.indexPage == 1
+                ? HomeInitial()
+                : homeController.indexPage == 2 ? DiaryPage() : Container(),
       ),
     );
   }
@@ -62,8 +47,8 @@ class _AMyHomePageState extends State<HomePage> {
     @required IconData icon,
     @required String label,
     @required double size,
+    Color color = Colors.white,
   }) {
-    final color = Colors.white;
     return BottomNavigationBarItem(
       icon: Icon(
         icon,

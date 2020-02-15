@@ -6,7 +6,7 @@ class Home = HomeBase with _$Home;
 
 abstract class HomeBase with Store {
   @observable
-  int indexPage = 1;
+  int indexPage = 2;
 
   @action
   void changePage(int index) => indexPage == index ? null : indexPage = index;
