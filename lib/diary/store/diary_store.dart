@@ -7,7 +7,7 @@ class Diary = _DiaryBase with _$Diary;
 
 abstract class _DiaryBase with Store {
   @observable
-  List<DiaryModel> listDiary = [
+  List<DiaryModel> listDiary = ObservableList.of([
     DiaryModel(
       title: "Trabalho",
       description: "Hoje o dia foi horrivel no trabalho",
@@ -20,7 +20,7 @@ abstract class _DiaryBase with Store {
       title: "Sair de casa",
       description: "Hoje o finalmente eu consegui sair de casa",
     ),
-  ];
+  ]);
 
   @action
   set(List<DiaryModel> value) => listDiary = value;
