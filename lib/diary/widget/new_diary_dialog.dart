@@ -72,7 +72,6 @@ class _NewDiaryDialogState extends State<NewDiaryDialog> {
                         description: _descriptionController.text,
                       ),
                     );
-                    print(widget.diaryController.listDiary);
                     Navigator.pop(context);
                   },
                   color: Colors.blueAccent,
