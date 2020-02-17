@@ -2,11 +2,12 @@ import 'tag.dart';
 
 class HistoryModel {
   int pulse;
-  DateTime dateTime = DateTime.now();
+  DateTime date;
   Tag tag;
 
   HistoryModel({
     this.pulse,
     this.tag,
-  });
+    date,
+  }) : this.date = date ?? DateTime.now();
 }

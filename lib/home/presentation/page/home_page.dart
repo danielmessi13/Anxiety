@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/history/store/history_store.dart';
+
+import 'package:mobx/mobx.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
 import 'package:flutter_anxiety/diary/presentation/page/diary_page.dart';
 import 'package:flutter_anxiety/diary/store/diary_store.dart';
 import 'package:flutter_anxiety/diary/widget/new_diary_dialog.dart';
 import 'package:flutter_anxiety/history/presentation/page/history_page.dart';
 import 'package:flutter_anxiety/home/presentation/widget/home_initial.dart';
 import 'package:flutter_anxiety/home/store/home_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/mobx.dart';
 
 class HomePage extends StatelessWidget {
   final homeController = Home();
   final diaryController = Diary();
+  final historyStore = HistoryStore();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -58,7 +62,7 @@ class HomePage extends StatelessWidget {
           onTap: homeController.changePage,
         ),
         body: homeController.indexPage == 0
-            ? HistoryPage()
+            ? HistoryPage(historyStore)
             : homeController.indexPage == 1
                 ? HomeInitial()
                 : homeController.indexPage == 2

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_anxiety/diary/store/diary_store.dart';
-import 'package:flutter_anxiety/diary/widget/new_diary_dialog.dart';
+
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/mobx.dart';
+
+import 'package:flutter_anxiety/diary/store/diary_store.dart';
 
 class DiaryPage extends StatelessWidget {
   final Diary diaryController;

@@ -1,5 +1,6 @@
-import 'package:flutter_anxiety/diary/models/diary.dart';
 import 'package:mobx/mobx.dart';
+
+import 'package:flutter_anxiety/diary/models/diary.dart';
 
 part 'diary_store.g.dart';
 
