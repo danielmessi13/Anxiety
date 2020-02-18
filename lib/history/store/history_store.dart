@@ -1,7 +1,6 @@
+import 'package:flutter_anxiety/history/services/models/history.dart';
+import 'package:flutter_anxiety/history/services/models/tag.dart';
 import 'package:mobx/mobx.dart';
-
-import 'package:flutter_anxiety/history/models/history.dart';
-import 'package:flutter_anxiety/history/models/tag.dart';
 
 part 'history_store.g.dart';
 
