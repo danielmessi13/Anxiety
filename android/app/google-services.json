@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "249128879293",
+    "firebase_url": "https://anxiety-efe4e.firebaseio.com",
+    "project_id": "anxiety-efe4e",
+    "storage_bucket": "anxiety-efe4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249128879293:android:7bbcfc8b689c63fe1623d4",
+        "android_client_info": {
+          "package_name": "com.example.flutter_anxiety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249128879293-sjgacc8l7dfgh886l249m8bhjh48u9mo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_anxiety",
+            "certificate_hash": "7c2ecdd44145a23c8d2a5b2a308b6ec402f263d8"
+          }
+        },
+        {
+          "client_id": "249128879293-v7o1c9f2kh8h5u9n48b9hugoumu7cg9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gcSw1TMrFw9hJ5bUbfBJ3jEIlFd010o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249128879293-v7o1c9f2kh8h5u9n48b9hugoumu7cg9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

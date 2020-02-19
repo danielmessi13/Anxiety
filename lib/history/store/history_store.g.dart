@@ -47,4 +47,10 @@ mixin _$HistoryStore on _HistoryBase, Store {
       _$_HistoryBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string = 'historyList: ${historyList.toString()}';
+    return '{$string}';
+  }
 }

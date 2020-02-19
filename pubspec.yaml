@@ -25,6 +25,10 @@ dependencies:
   mobx_codegen: ^1.0.1
   intl: ^0.16.1
   hasura_connect: ^1.1.1
+  firebase_analytics: ^5.0.2
+  firebase_auth: ^0.15.4
+  cloud_functions: ^0.4.2
+  google_fonts: ^0.3.9
 
 
 dev_dependencies:
@@ -45,9 +49,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+   - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

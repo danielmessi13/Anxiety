@@ -57,4 +57,10 @@ mixin _$Diary on _DiaryBase, Store {
       _$_DiaryBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string = 'listDiary: ${listDiary.toString()}';
+    return '{$string}';
+  }
 }

@@ -37,4 +37,10 @@ mixin _$Home on HomeBase, Store {
       _$HomeBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string = 'indexPage: ${indexPage.toString()}';
+    return '{$string}';
+  }
 }
