@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/login/store/auth0_store.dart';
 
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -19,7 +20,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
-  final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
   final emailFocus = FocusNode();
@@ -27,13 +27,14 @@ class _LoginPageState extends State<LoginPage> {
 
   final loginController = Login();
 
+  final auth0Store = Auth0Store();
+
   @override
   void dispose() {
     emailFocus.dispose();
     passwordFocus.dispose();
 
     emailController.dispose();
-    nameController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Bem vindo\nCadastre-se para continuar",
+                            'Bem vindo\nFaça o Login para continuar',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: fontSize(context) * 1.2,
@@ -67,17 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         SizedBox(height: 20),
                         CustomTextField(
-                          controller: nameController,
-                          label: "NOME",
-                          error: loginController.nameError,
-                          camelCase: true,
-                          focus: null,
-                          nextFocus: emailFocus,
-                          type: TextInputType.text,
-                        ),
-                        CustomTextField(
                           controller: emailController,
-                          label: "EMAIL",
+                          label: 'EMAIL',
                           error: loginController.emailError,
                           focus: emailFocus,
                           nextFocus: passwordFocus,
@@ -85,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         CustomTextField(
                           controller: passwordController,
-                          label: "SENHA",
+                          label: 'SENHA',
                           error: loginController.passwordError,
                           last: true,
                           obscure: true,
@@ -97,23 +89,40 @@ class _LoginPageState extends State<LoginPage> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.width * 0.13,
                           margin: EdgeInsets.only(top: 20),
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            onPressed: () => loginController.login(
-                              emailController.text,
-                              nameController.text,
-                              passwordController.text,
-                            ),
-                            color: Colors.blue[900],
-                            textColor: Colors.white,
-                            child: Text(
-                              "Criar conta".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: fontSize(context),
+                          child: Row(
+                            children: <Widget>[
+                              RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                onPressed: () => auth0Store.setClient(
+                                  emailController.text,
+                                  passwordController.text,
+                                ),
+                                color: Colors.blue[900],
+                                textColor: Colors.white,
+                                child: Text(
+                                  'Login'.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: fontSize(context),
+                                  ),
+                                ),
                               ),
-                            ),
+                              RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                onPressed: () => auth0Store.logout(),
+                                color: Colors.red[900],
+                                textColor: Colors.white,
+                                child: Text(
+                                  'Logout'.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: fontSize(context),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
