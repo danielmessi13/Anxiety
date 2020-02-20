@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_mobx/flutter_mobx.dart';
+
 import 'package:flutter_anxiety/core/font_size/font_size.dart';
 import 'package:flutter_anxiety/core/widgets/custom_text_field.dart';
 import 'package:flutter_anxiety/login/store/login_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 Color mainBGColor = Color(0xFF652A78);
 Color redColor = Color(0xFFDE3C10);
