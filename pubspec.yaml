@@ -19,22 +19,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
+  # MobX
   mobx: ^1.0.0
   flutter_mobx: ^1.0.1
-  mobx_codegen: ^1.0.1
-  intl: ^0.16.1
+  # Hasura
   hasura_connect: ^1.1.1
-  firebase_analytics: ^5.0.2
+  # Firebase
   firebase_auth: ^0.15.4
   cloud_functions: ^0.4.2
+  firebase_analytics: ^5.0.2
+  # Auth0
+  oauth2: ^1.5.0
+  flutter_secure_storage: ^3.3.1+1
+  # Misc
+  intl: ^0.16.1
   google_fonts: ^0.3.9
 
 
 dev_dependencies:
-  build_runner:
   flutter_test:
     sdk: flutter
+  # MobX
+  build_runner: ^1.7.4
+  mobx_codegen: ^1.0.1
   
 
 # For information on the generic Dart part of this file, see the
