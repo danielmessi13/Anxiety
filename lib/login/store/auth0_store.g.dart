@@ -26,6 +26,40 @@ mixin _$Auth0Store on _Auth0StoreBase, Store {
     }, _$clientAtom, name: '${_$clientAtom.name}_set');
   }
 
+  final _$errorAtom = Atom(name: '_Auth0StoreBase.error');
+
+  @override
+  Auth0Error get error {
+    _$errorAtom.context.enforceReadPolicy(_$errorAtom);
+    _$errorAtom.reportObserved();
+    return super.error;
+  }
+
+  @override
+  set error(Auth0Error value) {
+    _$errorAtom.context.conditionallyRunInAction(() {
+      super.error = value;
+      _$errorAtom.reportChanged();
+    }, _$errorAtom, name: '${_$errorAtom.name}_set');
+  }
+
+  final _$loadingAtom = Atom(name: '_Auth0StoreBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.context.enforceReadPolicy(_$loadingAtom);
+    _$loadingAtom.reportObserved();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.context.conditionallyRunInAction(() {
+      super.loading = value;
+      _$loadingAtom.reportChanged();
+    }, _$loadingAtom, name: '${_$loadingAtom.name}_set');
+  }
+
   final _$setClientAsyncAction = AsyncAction('setClient');
 
   @override
@@ -57,7 +91,8 @@ mixin _$Auth0Store on _Auth0StoreBase, Store {
 
   @override
   String toString() {
-    final string = 'client: ${client.toString()}';
+    final string =
+        'client: ${client.toString()},error: ${error.toString()},loading: ${loading.toString()}';
     return '{$string}';
   }
 }

@@ -13,7 +13,6 @@ class DiaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.only(top: 50),
       child: Observer(
         builder: (_) {
           return diaryController.listDiary.length > 0

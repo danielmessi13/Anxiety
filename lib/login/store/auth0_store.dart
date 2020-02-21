@@ -10,17 +10,31 @@ part 'auth0_store.g.dart';
 class Auth0Store = _Auth0StoreBase with _$Auth0Store;
 
 final _secureStorage = FlutterSecureStorage();
-final _logger = Logger();
+final _logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 0,
+    errorMethodCount: 8,
+    lineLength: 120,
+    colors: false,
+    printEmojis: true,
+    printTime: false,
+  ),
+);
 
 abstract class _Auth0StoreBase with Store {
   final _authEndpoint = Uri.parse('https://dev-pa7un662.auth0.com/oauth/token');
-
   static const _clientId = 'gg64KJZy2G6xmO5b7zlysEZvA6WiJI1f';
   static const _clientSecret =
       'Cj3Xacflf1pPNXQhQjffCfKq4gGYtoUgMBJLiC2T0774uJ7OooCL2jVbQ8MXUc9B';
 
   @observable
   oauth2.Client client;
+
+  @observable
+  Auth0Error error;
+
+  @observable
+  bool loading = true;
 
   _Auth0StoreBase() {
     _logger.i('Auth0Store Started');
@@ -29,21 +43,31 @@ abstract class _Auth0StoreBase with Store {
 
   @action
   Future<void> setClient(username, password) async {
-    var client = await oauth2.resourceOwnerPasswordGrant(
-      _authEndpoint,
-      username,
-      password,
-      scopes: ['openid'],
-      identifier: _clientId,
-      secret: _clientSecret,
-    );
+    loading = true;
+    try {
+      var client = await oauth2.resourceOwnerPasswordGrant(
+        _authEndpoint,
+        username,
+        password,
+        scopes: ['openid'],
+        identifier: _clientId,
+        secret: _clientSecret,
+      );
 
-    await _persistToken(jsonEncode(client.credentials.toJson()));
-    await getClient();
+      await _persistToken(jsonEncode(client.credentials.toJson()));
+      await getClient();
+    } on FormatException catch (e) {
+      if (e.message.contains('invalid_grant')) {
+        _logger.e('Invalid email or password');
+        error = Auth0Error.invalidCredentials;
+      }
+    }
+    loading = false;
   }
 
   @action
   Future<void> getClient() async {
+    loading = true;
     String token = await _getToken();
 
     if (token.isNotEmpty) {
@@ -51,6 +75,7 @@ abstract class _Auth0StoreBase with Store {
         oauth2.Credentials.fromJson(jsonDecode(token)),
       );
     }
+    loading = false;
   }
 
   @action
@@ -79,4 +104,8 @@ abstract class _Auth0StoreBase with Store {
     _logger.i(token != null ? 'Token found' : 'No token found');
     return token ?? '';
   }
+}
+
+enum Auth0Error {
+  invalidCredentials,
 }

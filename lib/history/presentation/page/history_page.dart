@@ -17,7 +17,6 @@ class HistoryPage extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.only(top: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -61,8 +60,8 @@ class HistoryPage extends StatelessWidget {
                               ),
                               subtitle: Text(
                                 DateFormat.yMMMMd('pt_BR').add_Hm().format(
-                                  historyStore.historyList[index].date,
-                                ),
+                                      historyStore.historyList[index].date,
+                                    ),
                               ),
                             ),
                           );

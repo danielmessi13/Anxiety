@@ -26,23 +26,6 @@ mixin _$Login on _LoginBase, Store {
     }, _$isLoadingAtom, name: '${_$isLoadingAtom.name}_set');
   }
 
-  final _$nameErrorAtom = Atom(name: '_LoginBase.nameError');
-
-  @override
-  String get nameError {
-    _$nameErrorAtom.context.enforceReadPolicy(_$nameErrorAtom);
-    _$nameErrorAtom.reportObserved();
-    return super.nameError;
-  }
-
-  @override
-  set nameError(String value) {
-    _$nameErrorAtom.context.conditionallyRunInAction(() {
-      super.nameError = value;
-      _$nameErrorAtom.reportChanged();
-    }, _$nameErrorAtom, name: '${_$nameErrorAtom.name}_set');
-  }
-
   final _$emailErrorAtom = Atom(name: '_LoginBase.emailError');
 
   @override
@@ -77,17 +60,10 @@ mixin _$Login on _LoginBase, Store {
     }, _$passwordErrorAtom, name: '${_$passwordErrorAtom.name}_set');
   }
 
-  final _$loginAsyncAction = AsyncAction('login');
-
-  @override
-  Future<void> login(String email, String name, String password) {
-    return _$loginAsyncAction.run(() => super.login(email, name, password));
-  }
-
   @override
   String toString() {
     final string =
-        'isLoading: ${isLoading.toString()},nameError: ${nameError.toString()},emailError: ${emailError.toString()},passwordError: ${passwordError.toString()}';
+        'isLoading: ${isLoading.toString()},emailError: ${emailError.toString()},passwordError: ${passwordError.toString()}';
     return '{$string}';
   }
 }

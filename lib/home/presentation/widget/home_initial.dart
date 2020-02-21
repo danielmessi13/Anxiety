@@ -9,15 +9,17 @@ class HomeInitial extends StatelessWidget {
     return Center(
       child: Container(
         width: width,
-        height: width,
-        child: FloatingActionButton(
-          onPressed: () {},
-          tooltip: "Clique para iniciar a ajuda",
-          splashColor: Colors.transparent,
-          backgroundColor: Colors.blueGrey[600],
-          child: Text(
-            "Iniciar",
-            style: TextStyle(fontSize: fontSize, color: Colors.white),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: FloatingActionButton(
+            onPressed: () {},
+            tooltip: "Clique para iniciar a ajuda",
+            splashColor: Colors.transparent,
+            backgroundColor: Colors.blueGrey[600],
+            child: Text(
+              "Iniciar",
+              style: TextStyle(fontSize: fontSize, color: Colors.white),
+            ),
           ),
         ),
       ),

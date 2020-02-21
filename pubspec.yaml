@@ -33,8 +33,9 @@ dependencies:
   flutter_secure_storage: ^3.3.1+1
   # Misc
   intl: ^0.16.1
-  google_fonts: ^0.3.9
   logger: ^0.8.3
+  provider: ^4.0.4
+  google_fonts: ^0.3.9
 
 
 dev_dependencies:
