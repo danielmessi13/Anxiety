@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:flutter_anxiety/pages/history/store/history_store.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+
+import 'history_store.dart';
 
 class HistoryPage extends StatelessWidget {
   final HistoryStore historyStore;

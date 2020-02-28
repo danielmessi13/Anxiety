@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 
-import 'package:flutter_anxiety/pages/login/service/login_service.dart';
+
+import 'login_service.dart';
 
 part 'login_store.g.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/pages/home/home_page.dart';
 
 import 'package:provider/provider.dart';
 
@@ -7,9 +8,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:flutter_anxiety/core/font_size/font_size.dart';
 import 'package:flutter_anxiety/core/widgets/custom_text_field.dart';
-import 'package:flutter_anxiety/pages/login/store/login_store.dart';
-import 'package:flutter_anxiety/pages/home/presentation/page/home_page.dart';
-import 'package:flutter_anxiety/pages/login/store/auth0_store.dart';
+
+import 'auth0_store.dart';
+import 'login_store.dart';
 
 Color mainBGColor = Color(0xFF652A78);
 Color redColor = Color(0xFFDE3C10);

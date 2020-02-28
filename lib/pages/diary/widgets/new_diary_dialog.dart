@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_anxiety/models/diary_repository.dart';
-import 'package:flutter_anxiety/pages/diary/store/diary_store.dart';
-import 'package:flutter_anxiety/pages/login/store/auth0_store.dart';
-import 'package:hasura_connect/hasura_connect.dart';
-import 'package:provider/provider.dart';
+import '../diary_store.dart';
 
 class NewDiaryDialog extends StatefulWidget {
   final DiaryStore diaryController;

@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_anxiety/pages/login/presentation/page/login_page.dart';
+import 'package:flutter_anxiety/pages/diary/diary_page.dart';
+import 'package:flutter_anxiety/pages/diary/diary_store.dart';
+import 'package:flutter_anxiety/pages/diary/widgets/new_diary_dialog.dart';
+import 'package:flutter_anxiety/pages/history/history_page.dart';
+import 'package:flutter_anxiety/pages/history/history_store.dart';
+import 'package:flutter_anxiety/pages/login/auth0_store.dart';
+import 'package:flutter_anxiety/pages/login/login_page.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 
 import 'package:mobx/mobx.dart';
@@ -7,14 +13,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:flutter_anxiety/pages/diary/presentation/page/diary_page.dart';
-import 'package:flutter_anxiety/pages/diary/store/diary_store.dart';
-import 'package:flutter_anxiety/pages/diary/widget/new_diary_dialog.dart';
-import 'package:flutter_anxiety/pages/history/presentation/page/history_page.dart';
-import 'package:flutter_anxiety/pages/history/store/history_store.dart';
-import 'package:flutter_anxiety/pages/home/presentation/widget/home_initial.dart';
-import 'package:flutter_anxiety/pages/home/store/home_store.dart';
-import 'package:flutter_anxiety/pages/login/store/auth0_store.dart';
+import 'home_store.dart';
+import 'widgets/home_initial.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:flutter_anxiety/pages/diary/store/diary_store.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+
+import 'diary_store.dart';
 
 class DiaryPage extends StatelessWidget {
   final DiaryStore diaryController;
