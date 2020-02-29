@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_anxiety/initial/initial_page.dart';
 import 'package:flutter_anxiety/pages/diary/diary_page.dart';
 import 'package:flutter_anxiety/pages/diary/diary_store.dart';
 import 'package:flutter_anxiety/pages/diary/widgets/new_diary_dialog.dart';
 import 'package:flutter_anxiety/pages/history/history_page.dart';
 import 'package:flutter_anxiety/pages/history/history_store.dart';
+import 'package:flutter_anxiety/pages/initial/initial_page.dart';
 import 'package:flutter_anxiety/pages/login/auth0_store.dart';
 import 'package:flutter_anxiety/pages/login/login_page.dart';
 import 'package:hasura_connect/hasura_connect.dart';
