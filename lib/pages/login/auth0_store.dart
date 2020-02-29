@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
@@ -49,7 +50,7 @@ abstract class _Auth0StoreBase with Store {
         _authEndpoint,
         username,
         password,
-        scopes: ['openid'],
+        scopes: ['openid', 'offline_access'],
         identifier: _clientId,
         secret: _clientSecret,
       );
@@ -66,13 +67,23 @@ abstract class _Auth0StoreBase with Store {
   @action
   Future<void> getClient() async {
     loading = true;
+    oauth2.Client _client;
     String token = await _getToken();
 
     if (token.isNotEmpty) {
-      this.client = oauth2.Client(
+      _client = oauth2.Client(
         oauth2.Credentials.fromJson(jsonDecode(token)),
       );
     }
+
+    print(_client.credentials.refreshToken);
+
+    if (!Jiffy(_client.credentials.expiration, "yyyy-MM-dd").isBefore(
+      DateTime.now(),
+    )) {
+      this.client = _client;
+    }
+
     loading = false;
   }
 
