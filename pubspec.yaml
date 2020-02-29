@@ -36,7 +36,6 @@ dependencies:
   logger: ^0.8.3
   provider: ^4.0.4
   google_fonts: ^0.3.9
-  jiffy: ^2.2.0
   dio: ^3.0.9
   # Animation
   flare_flutter: ^1.8.3
