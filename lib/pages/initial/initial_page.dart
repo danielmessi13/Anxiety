@@ -1,9 +1,12 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_anxiety/pages/home/teddy_controller.dart';
+import 'package:flutter_anxiety/pages/initial/initial_store.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class InitalPage extends StatelessWidget {
   final _teddyController = TeddyController();
+  final _initialController = Initial();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,25 @@ class InitalPage extends StatelessWidget {
     return Center(
       child: Column(
         children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Aumentar"),
+                onPressed: () {
+                  _initialController.changeWidth(_initialController.width + 10);
+                },
+              ),
+              RaisedButton(
+                child: Text("Diminuir"),
+                onPressed: () {
+                  _initialController.changeWidth(_initialController.width - 10);
+                },
+              ),
+            ],
+          ),
           Expanded(
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: FittedBox(
@@ -28,29 +49,25 @@ class InitalPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30),
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[600],
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(width: 2, color: Colors.white),
-                  ),
-                  width: double.infinity,
+            child: Observer(
+              builder: (_) => AnimatedContainer(
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                width: _initialController.width,
+                duration: Duration(milliseconds: 400),
+                decoration: BoxDecoration(
+                  color: _initialController.color,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(width: 2, color: Colors.white),
                 ),
-                AnimatedContainer(
-                  duration: Duration(microseconds: 300),
-                  color: Colors.white,
-                )
-              ],
+              ),
             ),
           ),
+          SizedBox(height: 10),
           Expanded(
             flex: 4,
             child: GestureDetector(
               onTap: () {
-                _teddyController.play("success");
+                _teddyController.play("fail");
               },
               child: FlareActor(
                 "assets/Teddy.flr",
@@ -60,9 +77,9 @@ class InitalPage extends StatelessWidget {
                 fit: BoxFit.contain,
                 controller: _teddyController,
                 callback: (name) {
-                  // if (name != "idle") {
-                  // _teddyController.play("idle");
-                  // }
+                  if (name != "fail") {
+                    _teddyController.play("success");
+                  }
                 },
               ),
             ),

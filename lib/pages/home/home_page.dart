@@ -93,7 +93,8 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blueGrey[800],
+          elevation: 0,
+          backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
           items: <BottomNavigationBarItem>[
             buildBottomNavigationBarItem(
               icon: Icons.history,

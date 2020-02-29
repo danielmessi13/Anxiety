@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Anxiety',
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.blueGrey,
-          primaryColor: Colors.blueGrey[500],
+          scaffoldBackgroundColor: Colors.lightBlue,
+          primaryColor: Colors.lightBlue,
           textTheme: GoogleFonts.pTMonoTextTheme(
             Theme.of(context).textTheme,
           ),
