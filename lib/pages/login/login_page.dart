@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_anxiety/pages/home/home_page.dart';
+import 'package:flutter_anxiety/pages/signin/signin_page.dart';
 
 import 'package:provider/provider.dart';
 
@@ -122,39 +123,57 @@ class _LoginPageState extends State<LoginPage> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.width * 0.13,
                       margin: EdgeInsets.only(top: 20),
-                      child: Observer(builder: (_) {
-                        return RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          onPressed: auth0Store.loading
-                              ? null
-                              : () {
-                                  if (loginController.isValid(
-                                      emailController.text,
-                                      passwordController.text)) {
-                                    auth0Store.setClient(
-                                      emailController.text.trim(),
-                                      passwordController.text.trim(),
-                                    );
-                                  }
-                                },
-                          color: Colors.blue[900],
-                          textColor: Colors.white,
-                          child: auth0Store.loading
-                              ? CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.white,
-                                  ),
-                                )
-                              : Text(
-                                  'Login'.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: fontSize(context),
-                                  ),
+                      child: Row(
+                        children: <Widget>[
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignInPage(),
                                 ),
-                        );
-                      }),
+                              );
+                            },
+                            child: Text('Criar conta'),
+                          ),
+                          Expanded(
+                            child: Observer(builder: (_) {
+                              return RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                onPressed: auth0Store.loading
+                                    ? null
+                                    : () {
+                                        if (loginController.isValid(
+                                            emailController.text,
+                                            passwordController.text)) {
+                                          auth0Store.setClient(
+                                            emailController.text.trim(),
+                                            passwordController.text.trim(),
+                                          );
+                                        }
+                                      },
+                                color: Colors.blue[900],
+                                textColor: Colors.white,
+                                child: auth0Store.loading
+                                    ? CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          Colors.white,
+                                        ),
+                                      )
+                                    : Text(
+                                        'Login'.toUpperCase(),
+                                        style: TextStyle(
+                                          fontSize: fontSize(context),
+                                        ),
+                                      ),
+                              );
+                            }),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
