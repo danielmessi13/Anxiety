@@ -74,14 +74,11 @@ abstract class _Auth0StoreBase with Store {
       _client = oauth2.Client(
         oauth2.Credentials.fromJson(jsonDecode(token)),
       );
-    }
-
-    print(_client.credentials.refreshToken);
-
-    if (!Jiffy(_client.credentials.expiration, "yyyy-MM-dd").isBefore(
-      DateTime.now(),
-    )) {
-      this.client = _client;
+      if (!_client.credentials.isExpired) {
+        this.client = _client;
+      } else {
+        logout();
+      }
     }
 
     loading = false;
