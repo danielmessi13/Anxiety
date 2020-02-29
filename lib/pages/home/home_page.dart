@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/initial/initial_page.dart';
 import 'package:flutter_anxiety/pages/diary/diary_page.dart';
 import 'package:flutter_anxiety/pages/diary/diary_store.dart';
 import 'package:flutter_anxiety/pages/diary/widgets/new_diary_dialog.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import 'home_store.dart';
-import 'widgets/home_initial.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
         body: homeController.indexPage == 0
             ? HistoryPage(historyStore)
             : homeController.indexPage == 1
-                ? HomeInitial()
+                ? InitalPage()
                 : homeController.indexPage == 2
                     ? DiaryPage(diaryController)
                     : Container(),

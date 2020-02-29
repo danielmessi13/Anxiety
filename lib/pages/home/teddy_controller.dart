@@ -83,7 +83,7 @@ class TeddyController extends FlareControls {
       Vec2D.copy(_faceOriginLocal, _faceControl.translation);
     }
     
-    play("fail");
+    play("idle");
   }
 
   successAnimation(String name) {
