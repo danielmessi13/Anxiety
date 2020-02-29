@@ -10,9 +10,6 @@ class InitalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.5;
-    final fontSize = MediaQuery.of(context).size.width * 0.06;
-
     return Center(
       child: Column(
         children: <Widget>[
