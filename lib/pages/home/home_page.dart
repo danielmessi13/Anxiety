@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anxiety/pages/achievements/achievement_page.dart';
+import 'package:flutter_anxiety/pages/achievements/widgets/achievement_view.dart';
 import 'package:flutter_anxiety/pages/diary/diary_page.dart';
 import 'package:flutter_anxiety/pages/diary/diary_store.dart';
 import 'package:flutter_anxiety/pages/diary/widgets/new_diary_dialog.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_anxiety/pages/history/history_store.dart';
 import 'package:flutter_anxiety/pages/initial/initial_page.dart';
 import 'package:flutter_anxiety/pages/login/auth0_store.dart';
 import 'package:flutter_anxiety/pages/login/login_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 
 import 'package:mobx/mobx.dart';
@@ -111,6 +114,11 @@ class _HomePageState extends State<HomePage> {
               size: 30,
               label: "Diário",
             ),
+            buildBottomNavigationBarItem(
+              icon: FontAwesomeIcons.trophy, 
+              label: "Conquistas", 
+              size: 30,
+            ),
           ],
           currentIndex: homeController.indexPage,
           onTap: homeController.changePage,
@@ -121,6 +129,8 @@ class _HomePageState extends State<HomePage> {
                 ? InitalPage()
                 : homeController.indexPage == 2
                     ? DiaryPage(diaryController)
+                    : homeController.indexPage == 3 
+                    ? AchievementPage()
                     : Container(),
         floatingActionButton: homeController.indexPage == 2
             ? FloatingActionButton(
@@ -132,7 +142,13 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: Icon(Icons.add),
               )
-            : null,
+            : homeController.indexPage == 3 ?
+            FloatingActionButton(
+              onPressed: (){
+                showAchievement(context, "Bem vindo!", "Primeira vez no aplicativo");
+              },
+              child: Icon(Icons.add),
+            ) : null,
       ),
     );
   }
